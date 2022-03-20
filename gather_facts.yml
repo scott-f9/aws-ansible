@@ -26,6 +26,7 @@
     with_items: "{{ elb_facts.elbs }}"
 
   - name: Gather info about ec2s using a boto3 script
+  # edit this with path to your script
     ansible.builtin.script: /home/ubuntu/playbooks/gather_info.py
     args:
       executable: python3  
