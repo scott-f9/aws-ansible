@@ -1,3 +1,0 @@
----
-- name: execute install script
-  script: gather-info.py
