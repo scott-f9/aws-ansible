@@ -11,3 +11,5 @@ Please excuse my graphic design skills... :)
 <img src="[Imgur](https://i.imgur.com/gchQMb2.png)" width="300">
 
 [Imgur](https://i.imgur.com/gchQMb2.png)
+
+![GitHub Logo](https://i.imgur.com/4TPZmAS.png)
