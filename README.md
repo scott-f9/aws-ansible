@@ -12,4 +12,4 @@ Please excuse my graphic design skills... :)
 
 [Imgur](https://i.imgur.com/gchQMb2.png)
 
-![GitHub Logo](https://i.imgur.com/4TPZmAS.png)
+![GitHub Logo](https://i.imgur.com/gchQMb2.png)
