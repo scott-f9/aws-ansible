@@ -8,4 +8,6 @@ For my software defined networking class, we were tasked with automating the dep
 ## Topology
 
 Please excuse my graphic design skills... :)
-![GitHub Logo](https://i.imgur.com/gchQMb2.png)
+
+
+!(https://i.imgur.com/gchQMb2.png)
