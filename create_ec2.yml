@@ -1,0 +1,86 @@
+---
+ - name:  provisioning EC2 webservers, security groups, and ELBs using Ansible
+   hosts: localhost
+   connection: local
+   gather_facts: False
+   tags: provisioning
+
+   vars:
+     keypair: yay
+     instance_type: t2.micro
+     image: ami-04505e74c0741db8d
+     wait: yes
+     group: webserver
+     count: 3
+     region: us-east-1
+     security_group: my-security-grp
+     user_data: "{{ lookup('file', '/home/ubuntu/playbooks/user-data.sh') }}"
+   
+   tasks:
+
+     - name: Creating security group
+       local_action: 
+         module: ec2_group
+         name: "{{ security_group }}"
+         description: Security Group for webserver Servers
+         region: "{{ region }}"
+         rules:
+            - proto: tcp
+              from_port: 22
+              to_port: 22
+              cidr_ip: 0.0.0.0/0
+            - proto: tcp
+              from_port: 8080
+              to_port: 8080
+              cidr_ip: 0.0.0.0/0
+            - proto: tcp
+              from_port: 80
+              to_port: 80
+              cidr_ip: 0.0.0.0/0
+         rules_egress:
+            - proto: all
+              cidr_ip: 0.0.0.0/0
+       register: basic_firewall
+     - name: Launch the new EC2 Instances
+       local_action:  ec2 
+                      group={{ security_group }} 
+                      instance_type={{ instance_type}} 
+                      image={{ image }}
+                      user_data={{ user_data }}
+                      wait=true 
+                      region={{ region }} 
+                      keypair={{ keypair }}
+                      count={{count}}
+       register: ec2
+     - name: Add Tagging to EC2 instances
+       local_action: ec2_tag resource={{ item.id }} region={{ region }} state=present
+       with_items: "{{ ec2.instances }}"
+       args:
+         tags:
+           Name: MyTargetEc2Instance
+     - name: Create Amazon ELB
+       amazon.aws.ec2_elb_lb:
+         name: firstelb
+         region: us-east-1
+         zones:
+           - us-east-1a
+           - us-east-1b
+         listeners:
+# protocol to load balance for
+           - protocol: http
+             load_balancer_port: 80
+             instance_port: 80
+             proxy_protocol: True
+         state: present
+       register: elbcreated
+     - name: Add each EC2 instance to the ELB
+       local_action: ec2_elb
+       args:
+         state: present
+         ec2_elbs: firstelb
+         region: "{{ region }}"
+         instance_id: "{{ item.id }}"
+       with_items: "{{ ec2.instances }}"
+
+
+

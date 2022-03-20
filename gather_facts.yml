@@ -1,0 +1,31 @@
+- name: gather facts
+  hosts: localhost
+  connection: local
+  gather_facts: True
+
+  tasks:
+
+  - name: "gather EC2 info"
+    ec2_instance_info:
+      region: us-east-1
+    register: ec2_info
+
+  - name: "display"
+    debug:
+      msg: " {{ item }} "
+    with_items: " {{ ec2_info.instances }} "
+
+  - action:
+      module: ec2_elb_facts
+      region: us-east-1
+    register: elb_facts
+
+  - action:
+      module: debug
+      msg: "{{ item.dns_name }}"
+    with_items: "{{ elb_facts.elbs }}"
+
+  - name: Gather info about ec2s using a boto3 script
+    ansible.builtin.script: /home/ubuntu/playbooks/gather_info.py
+    args:
+      executable: python3  
