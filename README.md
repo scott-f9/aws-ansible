@@ -10,3 +10,4 @@ For my software defined networking class, we were tasked with automating the dep
 Please excuse my graphic design skills... :)
 <img src="https://imgur.com/gchQMb2" width="300">
 
+[Imgur](https://i.imgur.com/gchQMb2.png)
