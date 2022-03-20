@@ -3,25 +3,24 @@ This project automates the setup of EC2s, load balancers, and security groups.
 
 ## About
 
-For my software defined networking class, we were tasked with automating the deployment of internet infrastructure using Ansible. We were given the choice to use any environment and any set of devices, so the project was self-directed in terms of what was built. I chose to use AWS and automate the deployment of EC2 webservers, a security group, and a load balancer. I automated the placement of the EC2s in the security and attached them to the load balancer, and also included a bootstrapped configuration of the EC2 webservers as part of the ansible script. There are also scripts to gather facts about devices after they are configured. No further configuration was needed beyond running my Ansible playbooks to get this up and running.
+For my software defined networking class, we were tasked with automating the deployment of internet infrastructure using Ansible. The project was self-directed in terms of what environment (e.g. aws, vmware) and devices were used. I automated the deployment of AWS EC2 webservers, a security group, and a load balancer. The EC2s were played in the security group, attached to the load balancer, and bootstrapped as webservers as part of my scripts. No further configuration was needed beyond running my Ansible playbooks to get this up and running.
 
 ## Topology
 
 Please excuse my graphic design skills... :)
 
-
 ![GitHub Logo](https://i.imgur.com/gchQMb2.png)
 
 ## AWS Setup
 
-This first part of the process is to prepare an AWS environment so that it can be managed through an ansible control node. Here are the steps:
-1.	Create a new AWS account, outside of the learner academy. The AWS academy accounts do not have permissions to create IAM roles, so I created a new account with full permissions
+Before running the scripts, a device needs to be configured as an Ansible control node:
+1.	Create a new AWS account
 2.	Create an EC2 instance on the account to server as the Ansible control node.
-3.	SSH into the control node and run the following commands to setup ansible:
-The EC2 control node now has everything installed that we need to for using it to manipulate AWS resources.
-4.	We need to give the control node permissions to configure EC2s. Navigate to IAM on the AWS console, and create a new role.
+3.	SSH into the control node and install ansible and its dependent packages
+4.	Navigate to IAM on the AWS console, and create a new role.
 5.	Give the new role the permission AmazonEC2FullAccess
 6.	Attach the role to the EC2 instance that is serving as the ansible control node.
+7.	Import the repository to the EC2, and run the playbooks from there.
 
 ## Files
 
