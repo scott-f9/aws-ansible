@@ -10,4 +10,4 @@ For my software defined networking class, we were tasked with automating the dep
 Please excuse my graphic design skills... :)
 
 
-!(https://i.imgur.com/gchQMb2.png)
+![GitHub Logo](https://i.imgur.com/gchQMb2.png)
