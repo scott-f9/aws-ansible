@@ -14,11 +14,11 @@ This is what is deployed after running the create_structures.yml playbook. Pleas
 ## AWS Setup
 
 Before running the scripts, a device on the target AWS account needs to be configured as an Ansible control node, which will be used to run the playbooks:
-1.	Create a new AWS account
+1.	Create a new AWS account if  you don't have one.
 2.	Create an EC2 instance on the account to server as the Ansible control node.
-3.	SSH into the control node and install ansible and its dependent packages
+3.	SSH into the control node and install ansible and its dependent packages.
 4.	Navigate to IAM on the AWS console, and create a new role.
-5.	Give the new role the permission AmazonEC2FullAccess
+5.	Give the new role the permission AmazonEC2FullAccess.
 6.	Attach the role to the EC2 instance that is serving as the ansible control node.
 7.	Import the repository to the EC2, and run the playbooks from there.
 
