@@ -50,7 +50,7 @@ Visit 3:
 
 ![GitHub Logo](https://i.imgur.com/ROBuA0g.png)
 
-Gathering facts about EC2s with the boto3 script:
+Gathering facts about EC2s with the boto3 script. Includes the 4th EC2 configured as control node:
 
 ![GitHub Logo](https://i.imgur.com/smf3eEq.png)
 
