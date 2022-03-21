@@ -25,8 +25,11 @@ Before running the scripts, a device on the target AWS account needs to be confi
 ## Files
 
 create_structures.yml - This file is the main playbook, and it creates the EC2s, load balancer, and security group.
+
 user_data.sh - shebang script used by create_structures.yml to bootstrap the EC2 instances as webservers
+
 gather_facts.yml - gathers facts about the configured AWS devices, and calls gather_info.py to use a boto3 script to gather information and print the output in a clean format :)
+
 hosts - sets localhost as the host
 
 ## Running the playbooks
