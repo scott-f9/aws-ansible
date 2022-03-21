@@ -34,8 +34,11 @@ hosts - sets localhost as the host
 
 ## Running the playbooks
 
-Run create_structures.yml with ansible, and specify the hosts file as the inventory.
-Run gather_facts.yuml with ansible to output information about the devices configured with the playbook.
+The yml files are run as ansible playbooks.
+
+Run create_structures.yml and specify the hosts file as the inventory.
+
+Run gather_facts.yml to output information about the devices configured with the playbook.
 
 ## Verify
 
