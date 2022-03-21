@@ -3,7 +3,7 @@ This project automates the setup of EC2s, load balancers, and security groups.
 
 ## About
 
-For my software defined networking class, we were tasked with automating the deployment of internet infrastructure using Ansible. The project was self-directed in terms of what environment (e.g. aws, vmware) and devices were used. I automated the deployment of AWS EC2 webservers, a security group, and a load balancer. The EC2s were played in the security group, attached to the load balancer, and bootstrapped as webservers as part of my scripts. No further configuration was needed beyond running my Ansible playbooks to get this up and running.
+For my software defined networking class, we were tasked with automating the deployment of internet infrastructure using Ansible. The project was self-directed in terms of what environment (e.g. aws, vmware) and devices were used. I automated the deployment of AWS EC2 webservers, a security group, and a load balancer. The EC2s were placed in the security group, attached to the load balancer, and bootstrapped as webservers as part of my scripts. No further configuration was needed beyond running my Ansible playbooks to get this up and running.
 
 ## Topology
 
